@@ -1,8 +1,5 @@
 {
   "name": "react-template",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
