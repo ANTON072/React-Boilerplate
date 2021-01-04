@@ -30,13 +30,13 @@ const plugins = [
 
   // distディレクトリの削除
   new CleanWebpackPlugin(),
-  
+
 ].filter(Boolean)
 
 module.exports = {
   mode: isDev ? "development" : "production",
 
-  // ソースマップ 
+  // ソースマップ
   devtool: isDev ? "inline-source-map" : false,
 
   entry: "./src/index.tsx",
