@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    // ES5に変換
+    "target": "ES5",
+    // TSのモジュールはES Modulesとして出力
+    "module": "esNext",
+    // JSXの書式を有効化
+    "jsx": "react",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": "./src/"
+  },
+  "include": ["src"]
+}
