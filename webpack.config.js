@@ -92,8 +92,14 @@ module.exports = {
 
   plugins,
 
-  // IE11対応
-  target: isDev ? "web" : ["web", "es5"],
+  /**
+   * Note:
+   * 配列で指定するとホットリロードが効かないので、開発時はstringで指定。
+   * es5の指定が無いとビルド時にES5形式にトランスパイルされないので、
+   * ビルド時は配列で指定する。
+   */
+  // target: isDev ? "web" : ["web", "es5"],
+  target: ["web", "es5"],
 
   stats: {
     colors: true,
