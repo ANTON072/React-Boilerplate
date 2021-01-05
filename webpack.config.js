@@ -4,33 +4,22 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const CopyPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const webpack = require("webpack")
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === "development"
 
 const sourceMap = isDev
 
 const plugins = [
-  // ホットリロード
-  isDev && new ReactRefreshWebpackPlugin(),
-
   // typescriptの型チェックとeslintを高速化
   new ForkTsCheckerWebpackPlugin(),
-
   // CSSファイル外部化
-  new MiniCssExtractPlugin({
-    filename: "css/main.css",
-  }),
-
+  new MiniCssExtractPlugin({ filename: "css/main.css", }),
   // 環境変数
   new webpack.EnvironmentPlugin(Object.keys(process.env)),
-
   // ファイルコピー
   !isDev && new CopyPlugin({ patterns: [{ from: "public", to: "." },] }),
-
   // distディレクトリの削除
   new CleanWebpackPlugin(),
-
 ].filter(Boolean)
 
 module.exports = {
@@ -53,10 +42,7 @@ module.exports = {
         include: `${__dirname}/src`,
         exclude: "/node_modules/",
         use: [
-          isDev && {
-            loader: "babel-loader",
-            options: { plugins: ['react-refresh/babel'] },
-          },
+          { loader: "babel-loader", },
           {
             loader: "ts-loader",
             options: { transpileOnly: true, }
@@ -98,8 +84,8 @@ module.exports = {
    * es5の指定が無いとビルド時にES5形式にトランスパイルされないので、
    * ビルド時は配列で指定する。
    */
-  // target: isDev ? "web" : ["web", "es5"],
-  target: ["web", "es5"],
+  target: isDev ? "web" : ["web", "es5"],
+  // target: ["web", "es5"],
 
   stats: {
     colors: true,
