@@ -1,10 +1,11 @@
 import React from 'react';
-import Header from 'components/Header';
+import Header from 'components/organisms/Header';
+import Home from 'pages/home';
 
 const App: React.FC = () => (
   <div>
     <Header />
-    <h1>React App5</h1>
+    <Home />
   </div>
 );
 
